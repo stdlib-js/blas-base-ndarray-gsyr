@@ -73,8 +73,6 @@ var gsyr = require( '@stdlib/blas-base-ndarray-gsyr' );
 
 Performs the symmetric rank 1 operation `A = alpha*x*x^T + A`, where `alpha` is a scalar, `x` is a one-dimensional ndarray, and `A` is an `N` by `N` symmetric matrix.
 
-<!-- eslint-disable max-len -->
-
 ```javascript
 var matrix = require( '@stdlib/ndarray-matrix-ctor' );
 var vector = require( '@stdlib/ndarray-vector-ctor' );
@@ -120,8 +118,6 @@ The function has the following parameters:
 <section class="examples">
 
 ## Examples
-
-<!-- eslint-disable max-len -->
 
 <!-- eslint no-undef: "error" -->
 
