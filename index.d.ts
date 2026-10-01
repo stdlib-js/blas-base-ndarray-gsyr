@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var strided = require( '@stdlib/blas-base-gsyr' ).ndarray;
-
-
-// MAIN //
+import { typedndarray, ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Performs the symmetric rank 1 operation `A = alpha*x*x^T + A`, where `alpha` is a scalar, `x` is a one-dimensional ndarray, and `A` is an `N` by `N` symmetric matrix.
@@ -42,8 +34,8 @@ var strided = require( '@stdlib/blas-base-gsyr' ).ndarray;
 *     -   a zero-dimensional ndarray specifying whether the upper or lower triangular part of the symmetric matrix `A` should be referenced.
 *     -   a zero-dimensional ndarray containing a scalar constant corresponding to `alpha`.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {Object} output ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var matrix = require( '@stdlib/ndarray-matrix-ctor' );
@@ -67,24 +59,9 @@ var strided = require( '@stdlib/blas-base-gsyr' ).ndarray;
 * var bool = ( y === A );
 * // returns true
 */
-function gsyr( arrays ) {
-	var alpha;
-	var uplo;
-	var x;
-	var A;
-
-	x = arrays[ 0 ];
-	A = arrays[ 1 ];
-
-	uplo = ndarraylike2scalar( arrays[ 2 ] );
-	alpha = ndarraylike2scalar( arrays[ 3 ] );
-
-	strided( uplo, numelDimension( A, 0 ), alpha, getData( x ), getStride( x, 0 ), getOffset( x ), getData( A ), getStride( A, 0 ), getStride( A, 1 ), getOffset( A ) );
-
-	return A;
-}
+declare function gsyr<T extends typedndarray<number> = typedndarray<number>>( arrays: [ typedndarray<number>, T, ndarray, typedndarray<number> ] ): T;
 
 
 // EXPORTS //
 
-module.exports = gsyr;
+export = gsyr;
